@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
 import {LoginForm} from '../../data/interfaces/login-form';
 
@@ -7,7 +7,8 @@ import {LoginForm} from '../../data/interfaces/login-form';
 @Component({
   selector: 'app-login-page',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   standalone: true,
   templateUrl: './login-page.component.html',
@@ -15,18 +16,15 @@ import {LoginForm} from '../../data/interfaces/login-form';
 })
 export class LoginPageComponent {
   authService = inject(AuthService);
-  form = new FormGroup<LoginForm>({
-    username: new FormControl<string>('', Validators.required),
-    password: new FormControl<string>('', Validators.required),
-  })
+  loginForm : LoginForm = {
+    username: '',
+    password: ''
+  }
 
   onSubmit(event: Event) {
-    console.log(this.form.value);
 
-
-    if(this.form.valid){
-      this.authService.login(this.form.value)
-    }
+      this.authService.login(this.loginForm)
+      console.log(this.loginForm);
 
   }
 }
