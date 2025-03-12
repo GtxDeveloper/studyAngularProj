@@ -6,11 +6,22 @@
       [(ngModel)]="loginForm.username"
       class="tt-input" name="username" type="text" placeholder="Введите логин" required >
   </label>
+
+
   <label class="tt-control-label mb32" >
     Пароль
+
+    <span class="password-input">
     <input
       [(ngModel)]="loginForm.password"
-      class="tt-input" name="password" type="text" placeholder="Введите пароль" required >
+      class="tt-input" name="password" [type]="isPasswordVisible() ? 'text' : 'password' " placeholder="Введите пароль" required >
+      <button class="password-eye-button"
+        [class.active]="isPasswordVisible()"
+        (click)="isPasswordVisible.set(!isPasswordVisible())"
+      >
+        <img src="/assets/svg/hidePassword.svg" alt="">
+      </button>
+    </span>
   </label>
 
   <button (click)="onSubmit($event)" class="btn btn-shadow" type="submit">Войти</button>

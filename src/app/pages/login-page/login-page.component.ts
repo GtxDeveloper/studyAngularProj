@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
 import {LoginForm} from '../../data/interfaces/login-form';
+import {from, map} from 'rxjs';
 
 
 @Component({
@@ -16,6 +17,8 @@ import {LoginForm} from '../../data/interfaces/login-form';
 })
 export class LoginPageComponent {
   authService = inject(AuthService);
+
+  isPasswordVisible = signal<boolean>(false);
   loginForm : LoginForm = {
     username: '',
     password: ''
@@ -24,7 +27,5 @@ export class LoginPageComponent {
   onSubmit(event: Event) {
 
       this.authService.login(this.loginForm)
-      console.log(this.loginForm);
-
   }
 }

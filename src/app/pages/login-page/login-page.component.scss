@@ -15,3 +15,23 @@
 .login-form__header{
   margin-bottom: 60px;
 }
+
+.password-input{
+  position: relative;
+}
+
+.password-eye-button{
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(20%);
+  background: none;
+  color: #FFFFFFBF;
+  border: none;
+  cursor: pointer;
+
+}
+
+.password-eye-button.active{
+  color: var(--primary-color);
+}

@@ -6,6 +6,7 @@
   --light-color: #FFFFFF;
   --primary-color: #AE7AFF;
   --grey-color: #5F646D;
+  --dark-hover-color: #161616;
 }
 
 *,
@@ -101,4 +102,11 @@ body{
   font-family: "JetBrains Mono", sans-serif;
   color: var(--light-color);
   margin-top: 8px;
+}
+
+.medium-text{
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "JetBrains Mono", sans-serif;
+  line-height: 16px;
 }
