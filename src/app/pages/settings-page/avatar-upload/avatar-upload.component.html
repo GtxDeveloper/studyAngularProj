@@ -1,0 +1,24 @@
+@if(isHaveAvatar && !isFileDropped){
+  <img class="avatar" [src]="preview() | imgUrl" alt="">
+} @else {
+  <img class="avatar" [src]="preview()" alt="">
+}
+
+
+
+
+<div dnd class="dropzone" tabindex="0"
+     (fileDropped)="onFileDropped($event)"
+     (keyup.enter)="fileDrop.click()">
+
+  <div class="dropzone-content">
+    <svg icon="upload"></svg>
+    <span class="medium-text">Перетащите изображение или Загрузите</span>
+  </div>
+
+  <input
+    (change)="fileBrowserHandler($event)"
+    type="file" class="avatar-input"
+    #fileDrop
+    [(ngModel)]="avatar">
+</div>

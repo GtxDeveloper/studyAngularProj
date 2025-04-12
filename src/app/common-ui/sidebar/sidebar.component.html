@@ -3,10 +3,10 @@
 <nav>
   <ul class="main-menu-list mb16">
     <li *ngFor="let menuitem of menuItems">
-      <button class="menu-item">
+      <a class="menu-item" [routerLink]="[menuitem.link]" routerLinkActive="active">
           <svg [icon]="menuitem.icon"></svg>
           <span>{{menuitem.label}}</span>
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -27,11 +27,17 @@
 </div>
 
 <footer class="sidebar__footer">
-  @if(me){
+  @if(me(); as  me){
     @if(me.avatarUrl){
       <img [src]="me.avatarUrl | imgUrl" alt="">
     } @else {
       <img src="/assets/imgs/favicon.ico" alt="">
     }
+    <div class="medium-text username-text">{{me.username}}</div>
+
+    <a [routerLink]="['settings']" class="settings-btn">
+      <svg icon="settings"></svg>
+    </a>
   }
+
 </footer>
